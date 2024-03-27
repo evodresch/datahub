@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from spv_master_data.views import add_spv, landing_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('main/', add_spv, name='Add SPV'),
+    path('', landing_page, name='landing_page')
 ]
