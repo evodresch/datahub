@@ -5,9 +5,11 @@
     <title>Main</title>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
+        {{ spv_form.as_p }}
+        {{ location_form.as_p }}
+        <button type="submit">Submit</button>
     </form>
+
 
 </form>
 
