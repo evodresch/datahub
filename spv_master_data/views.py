@@ -6,12 +6,12 @@ from django.http import HttpResponse
 
 
 def landing_page(request):
-    return HttpResponse("Welcome to the DataHub Dashboard!")
+    return render(request, 'spv_master_data/landing_page.html')
 
 
 # View for a successful adding of an SPV
 def success_page(request):
-    return HttpResponse("Success!")
+    return render(request, 'spv_master_data/success_page.html')
 
 
 def add_spv(request):
@@ -32,5 +32,11 @@ def add_spv(request):
     else:
         spv_form = SPVForm()
         location_form = LocationForm()
-    return render(request, 'spv_master_data/main.html', {'spv_form': spv_form,
+    return render(request, 'spv_master_data/add_spv.html', {'spv_form': spv_form,
                                                          'location_form': location_form})
+
+
+# View that fetches the SPV data from the database and renders a template to display it
+def spv_database_view(request):
+    spvs = SPV.objects.all() # Fetch all instances
+    return render(request, 'spv_master_data/spv_database.html', {'spvs': spvs})

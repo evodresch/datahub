@@ -9,6 +9,6 @@ class SPVAdmin(admin.ModelAdmin):
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('gemeinde', 'gemarkung', 'plz')
-    search_fields = ('gemeinde', 'gemarkung', 'plz')
+    list_display = ('gemeinde', 'breitengrad', 'laengengrad')
+    search_fields = ('gemeinde', 'breitengrad', 'laengengrad')
     # You can add more options as needed

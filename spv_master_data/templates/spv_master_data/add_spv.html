@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <h1>Add a new SPV entry to the database</h1>
     <form method="post">
         {% csrf_token %}
         {{ spv_form.as_p }}
+        <h2>Standort</h2>
         {{ location_form.as_p }}
         <button type="submit">Submit</button>
     </form>

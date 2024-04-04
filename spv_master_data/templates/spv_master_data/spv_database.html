@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html>
+<head>
+    <title>SPV Database</title>
+</head>
+<body>
+    <h1>SPV Database</h1>
+    <a href="{% url 'add_spv' %}">Add a New SPV</a> | <a href="{% url 'landing_page' %}">Back to Home</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>OneSolar ID</th>
+                <th>Name</th>
+                <th>Postleitzahl</th>
+                <th>Gemeinde</th>
+                <!-- Add or remove table headers based on your SPV model attributes -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for spv in spvs %}
+                <tr>
+                    <td>{{ spv.onesolar_id }}</td>
+                    <td>{{ spv.name }}</td>
+                    <td>{{ spv.location.plz }}</td>
+                    <td>{{ spv.location.gemeinde }}</td>
+                    <!-- Add or remove data cells based on your SPV model attributes -->
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No SPVs found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
