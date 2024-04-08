@@ -1,0 +1,14 @@
+form {
+    /* Styles for the form */
+}
+
+input, select, textarea {
+    margin-bottom: 10px; /* Adds space between fields */
+    width: 100%; /* Adjust as needed */
+    /* More styles */
+}
+
+label {
+    display: block; /* Ensures the label is above the input field */
+    margin-top: 20px;
+}
