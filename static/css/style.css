@@ -3,12 +3,19 @@ form {
 }
 
 input, select, textarea {
-    margin-bottom: 10px; /* Adds space between fields */
-    width: 100%; /* Adjust as needed */
+    margin-bottom: 2px; /* Adds space between fields */
+    width: 50%; /* Adjust as needed */
     /* More styles */
 }
 
 label {
     display: block; /* Ensures the label is above the input field */
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.custom-button {
+    background-color: #4CAF50; /* Custom green */
+    border: none;
+    color: white;
+    /* More custom styles */
 }
