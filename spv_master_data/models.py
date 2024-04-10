@@ -8,7 +8,7 @@ class Location(models.Model):
     gemarkung = models.CharField(max_length=100, verbose_name='Gemarkung')
     flurstuecke = models.CharField(max_length=50, verbose_name='Flurstücke')
     breitengrad = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Breitengrad')
-    laengengrad = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Ländengrad')
+    laengengrad = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Längengrad')
     groesse_der_bodenflaeche = models.DecimalField(max_digits=10, decimal_places=2,
                                                    verbose_name='Größe der Bodenfläche')
     ART_DER_BODENFLAECHE_CHOICES = [

@@ -6,18 +6,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}">
     <title>Neue SPV</title>
-    <h1>Neue SPV zur Datenbank hinzufügen</h1>
 <body>
-    <form method="post">
+    <h1>Neue SPV zur Datenbank hinzufügen</h1>
+    <form class="my-custom-form" method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <h2>Hauptdaten</h2>
-        {{ spv_form.as_p }}
+        {% crispy spv_form %}
         <h2>Standort</h2>
-        {{ location_form.as_p }}
+        {% crispy location_form %}
         <h2>Unternehmensdaten</h2>
-        {{ company_form.as_p }}
+        {% crispy company_form %}
         <button type="submit" class="custom-button">Submit</button>
     </form>
 </body>
