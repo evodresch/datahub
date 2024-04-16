@@ -8,3 +8,21 @@
     min-width: 150px; /* Ensures the dropdown is not too narrow */
     max-width: 300px; /* Ensures the dropdown is not too wide */
 }
+
+/* Custom form row styling */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    padding-left_ 100px;
+}
+
+/* Adjust label width */
+.form-row label
+    width: 100%; /* or whatever percentage you prefer */
+}
+
+/* If you need to target the input fields directly */
+.form-row .col-md-9 {
+    padding-left: 500px; /* Adjust padding if necessary */
+}

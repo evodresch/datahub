@@ -13,13 +13,14 @@
     <h1>Neue SPV zur Datenbank hinzufügen</h1>
     <form class="my-custom-form" method="post">
         {% csrf_token %}
-        {{ form|crispy }}
         <h2>Hauptdaten</h2>
         {% crispy spv_form %}
         <h2>Standort</h2>
         {% crispy location_form %}
         <h2>Unternehmensdaten</h2>
         {% crispy company_form %}
+        <h2>Meilensteine</h2>
+        {% crispy milestones_form %}
         <button type="submit" class="custom-button">Submit</button>
     </form>
 </body>

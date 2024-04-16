@@ -2,7 +2,7 @@ from django.forms import inlineformset_factory
 from django.shortcuts import render, redirect
 from django.db import transaction
 from .models import SPV, Location, Company
-from .forms import SPVForm, LocationForm, CompanyForm
+from .forms import SPVForm, LocationForm, CompanyForm, MilestonesForm
 from django.http import HttpResponse
 
 
@@ -20,17 +20,22 @@ def add_spv(request):
         spv_form = SPVForm(request.POST)
         location_form = LocationForm(request.POST)
         company_form = CompanyForm(request.POST)
+        milestones_form = MilestonesForm(request.POST)
         if spv_form.is_valid() and location_form.is_valid():
             # First, save the Location instance
             location_instance = location_form.save()
             # Save the Company instance
             company_instance = company_form.save()
+            # Save the Milestones instance
+            milestones_instance = milestones_form.save()
             # Now, create an SPV instance but don't save it to the database yet
             spv_instance = spv_form.save(commit=False)
             # Link the newly created Location instance to the SPV instance
             spv_instance.location = location_instance
             # Link the newly created Company instance to the SPV instance
             spv_instance.company = company_instance
+            # Link the newly created Milestones instance to the SPV instance
+            spv_instance.milestones = milestones_instance
             # Finally, save the SPV instance to the database
             spv_instance.save()
             # Redirect to a new URL:
@@ -39,10 +44,12 @@ def add_spv(request):
         spv_form = SPVForm()
         location_form = LocationForm()
         company_form = CompanyForm()
+        milestones_form = MilestonesForm()
     return render(request, 'spv_master_data/add_spv.html', {
         'spv_form': spv_form,
         'location_form': location_form,
-        'company_form': company_form,})
+        'company_form': company_form,
+        'milestones_form': milestones_form,})
 
 
 # View that fetches the SPV data from the database and renders a template to display it

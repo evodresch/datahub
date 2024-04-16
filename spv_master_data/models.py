@@ -36,13 +36,23 @@ class Company(models.Model):
     bic_kreditgeber = models.CharField(max_length=11, verbose_name='BIC Finanzierende Bank')
     kreditgeber = models.CharField(max_length=100, verbose_name='Finanzierende Bank')
     komplementaer_1 = models.CharField(max_length=15, verbose_name='Komplementär I')
-    komplementaer_2 = models.CharField(max_length=15, verbose_name='Komplementär II')
+    komplementaer_2 = models.CharField(max_length=15, verbose_name='Komplementär II', blank=True)
     kommanditist_1 = models.CharField(max_length=15, verbose_name='Kommanditist I')
-    kommanditist_2 = models.CharField(max_length=15, verbose_name='Kommanditist II')
-    kommanditist_3 = models.CharField(max_length=15, verbose_name='Kommanditist III')
-    kommanditist_4 = models.CharField(max_length=15, verbose_name='Kommanditist IV')
-    kommanditist_5 = models.CharField(max_length=15, verbose_name='Kommanditist V')
+    kommanditist_2 = models.CharField(max_length=15, verbose_name='Kommanditist II', blank=True)
+    kommanditist_3 = models.CharField(max_length=15, verbose_name='Kommanditist III', blank=True)
+    kommanditist_4 = models.CharField(max_length=15, verbose_name='Kommanditist IV', blank=True)
+    kommanditist_5 = models.CharField(max_length=15, verbose_name='Kommanditist V', blank=True)
 
+
+# Data of important milestones
+class Milestones(models.Model):
+    satzungsbeschluss = models.DateField(verbose_name='Satzungsbeschluss', blank=True)
+    baustart = models.DateField(verbose_name='Baustart', blank=True)
+    inbetriebnahme = models.DateField(verbose_name='Inbetriebnahme', blank=True)
+    eeg_inbetriebnahme = models.DateField(verbose_name='EEG-Inbetriebnahme', blank=True)
+    zuschlag_eeg = models.DateField(verbose_name='Zuschlag aus EEG-Ausschreibung', blank=True)
+    ppa_abschluss = models.DateField(verbose_name='Abschluss PPA', blank=True)
+    finanzierung_abschluss = models.DateField(verbose_name='Abschluss Finanzierung', blank=True)
 
 
 # Main SPV model with the main data fields (Hauptdaten)
@@ -65,7 +75,7 @@ class SPV(models.Model):
         ('IM VERKAUFSPROZESS', 'Im Verkaufsprozess')
     ]
     stand = models.CharField(max_length=100, choices=STAND_CHOICES, verbose_name='Aktueller Stand')
-    besonderheit = models.CharField(max_length=255, verbose_name='Besonderheit')
+    besonderheit = models.CharField(max_length=255, verbose_name='Besonderheit', blank=True)
 
     # Add location model
     location = models.OneToOneField(Location, on_delete=models.CASCADE, related_name='spv',
@@ -75,6 +85,9 @@ class SPV(models.Model):
     company = models.OneToOneField(Company, on_delete=models.CASCADE, related_name='spv',
                                    verbose_name='Unternehmensdaten', null=True)
 
+    # Add milestones model
+    milestones = models.OneToOneField(Milestones, on_delete=models.CASCADE, related_name='spv',
+                                   verbose_name='Meilensteine', null=True)
     def __str__(self):
         return self.name
 
